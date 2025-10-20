@@ -15,6 +15,7 @@ This is a simple program intended to help bring up sandbox OpenShift clusters. I
             --prefix "your-username" \
             --release-arch "amd64" \
             --release-stream "4.14.0-0.ci" \
+            --aws-region "us-east-1" \
             --ssh-key-path "/path/to/your/public/ssh/keys" \
             --pull-secret-path "/path/to/your/pull/secret" \
             --work-dir "$HOME/.openshift-installer"

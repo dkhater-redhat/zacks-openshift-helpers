@@ -26,6 +26,7 @@ func init() {
 		},
 	}
 
+	setupCmd.PersistentFlags().StringVar(&setupOpts.awsRegion, "aws-region", "us-east-1", "AWS region to deploy the cluster in")
 	setupCmd.PersistentFlags().StringVar(&setupOpts.postInstallManifestPath, "post-install-manifests", "", "Directory containing K8s manifests to apply after successful installation.")
 	setupCmd.PersistentFlags().StringVar(&setupOpts.pullSecretPath, "pull-secret-path", defaultPullSecretPath, "Path to a pull secret that can pull from registry.ci.openshift.org")
 	setupCmd.PersistentFlags().StringVar(&setupOpts.releasePullspec, "release-pullspec", "", "An arbitrary release pullspec to spin up.")

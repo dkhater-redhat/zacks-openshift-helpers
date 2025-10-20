@@ -21,6 +21,7 @@ const (
 )
 
 type inputOpts struct {
+	awsRegion               string
 	enableTechPreview       bool
 	postInstallManifestPath string
 	pullSecretPath          string
@@ -176,6 +177,7 @@ func (i *inputOpts) toInstallConfigOpts() installconfig.Opts {
 		EnableTechPreview: i.enableTechPreview,
 		Kind:              i.releaseKind,
 		PullSecretPath:    i.pullSecretPath,
+		Region:            i.awsRegion,
 		SSHKeyPath:        i.sshKeyPath,
 		Prefix:            i.prefix,
 	}

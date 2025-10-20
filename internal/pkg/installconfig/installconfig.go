@@ -99,6 +99,7 @@ type Opts struct {
 	Kind              string
 	SSHKeyPath        string
 	PullSecretPath    string
+	Region            string
 	Variant           string
 	EnableTechPreview bool
 }
@@ -234,6 +235,15 @@ func renderConfig(opts Opts) ([]byte, error) {
 	parsed["metadata"] = map[string]interface{}{
 		"name":              opts.ClusterName(),
 		"creationTimestamp": nil,
+	}
+
+	// Set AWS region if provided
+	if opts.Region != "" {
+		if platform, ok := parsed["platform"].(map[string]interface{}); ok {
+			if aws, ok := platform["aws"].(map[string]interface{}); ok {
+				aws["region"] = opts.Region
+			}
+		}
 	}
 
 	return yaml.Marshal(parsed)
